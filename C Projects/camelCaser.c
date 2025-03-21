@@ -2,8 +2,6 @@
 #include <ctype.h>
 #include <string.h>
 
-
-
 void makeCamelCase(char* arr, int* size){
 
     int j = 0;
@@ -35,7 +33,7 @@ int main(){
 
     printf("Enter a string: ");
       if (fgets(sampleString, sizeof(sampleString), stdin) != NULL) {
-        // Remove the newline character if present
+    
         size_t len = strlen(sampleString);
         if (len > 0 && sampleString[len-1] == '\n') {
             sampleString[len-1] = '\0';
