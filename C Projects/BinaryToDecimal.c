@@ -1,33 +1,25 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
-int *convertBinaryToDeci(int binaryNum, int bitStringLength)
+int convertBinaryStringToDeci(const char* binaryStr)
 {
-    if (binaryNum == 0) return 0;
-    
     int decimalNum = 0;
-    
-    while (binaryNum > 0)
-    {
-        int binaryDigit = binaryNum % 10;
-        
-        if (binaryDigit == 1)
-        {
-            decimalNum += pow(2, bitStringLength);
+    int length = strlen(binaryStr);
+
+    for (int i = length - 1, power = 0; i >= 0; i--, power++) {
+        if (binaryStr[i] == '1') {
+            decimalNum += pow(2, power);
         }
-        
-        binaryNum /= 10;
-        bitStringLength--;
-        
     }
     return decimalNum;
 }
 
 int main()
 {
-    printf("%d", convertBinaryToDeci(1011, 4));
-    
+    const char* binaryStr = "01111"; 
+    int decimalNum = convertBinaryStringToDeci(binaryStr);
+    printf("\n\n%s (binary) = %d (decimal)", binaryStr, decimalNum);
 
     return 0;
 }
